@@ -12,14 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.formaciondbi.microservicios.empresa.entity.Empresa;
 import com.formaciondbi.microservicios.empresa.entity.Noticia;
-import com.formaciondbi.microservicios.empresa.repository.NoticiaRespository;
+import com.formaciondbi.microservicios.empresa.repository.NoticiaRepository;
 import com.formaciondbi.microservicios.generics.services.ServicesImpl;
 
 @Service
 public class EmpresaServiceImpl extends ServicesImpl<Empresa, Long> implements EmpresaService{
 
 	@Autowired
-	private NoticiaRespository noticiaRepository;
+	private NoticiaRepository noticiaRepository;
 	
 	
 	@Override
