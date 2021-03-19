@@ -10,10 +10,11 @@ import com.formaciondbi.microservicios.empresa.entity.Noticia;
 import com.formaciondbi.microservicios.generics.services.Services;
 
 public interface EmpresaService extends Services<Empresa, Long>{
-
+	
 	public List<Noticia> findNoticiasByEmpresaId(Long id); 
 	
 	public List<Noticia> findByTituloOrResumen(Long id, String term);
 	
-	public Page<Noticia> findAllPageableByEmpresaId(Long id, Pageable pageable);
+	public Page<Noticia> findNoticiaByTituloOrResumenByEmpresaId(Long id, String term, Pageable pageable);
+	
 }

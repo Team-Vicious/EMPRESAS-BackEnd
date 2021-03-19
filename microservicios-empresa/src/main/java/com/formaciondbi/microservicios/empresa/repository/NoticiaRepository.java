@@ -11,15 +11,15 @@ import com.formaciondbi.microservicios.generics.repository.Repository;
 
 public interface NoticiaRepository extends Repository<Noticia, Long>{
 
-	//trae todas las noticias
+	//trae todas las noticias por id empresa
 	@Query("select n from Empresa e join e.noticias n where e.id=?1")
 	public List<Noticia> findNoticiasByEmpresaId(Long id); 
 	
-	//trae una consulta descendente con limite 5(el limite da error, despues arreglar)
+	//trae una consulta descendente de noticias por id empresa
 	@Query("select n from Empresa e join e.noticias n where e.id=?1 AND upper(n.titulo) like upper(concat('%', ?2, '%')) or upper(n.resumen) like upper(concat('%', ?2, '%')) ORDER BY n.createAt DESC")
 	public List<Noticia> findByTituloOrResumen(Long id, String term);
 	
-	//trae una consulta descendente pageable
+	//trae una consulta descendente pageable de noticias por id empresa
 	@Query("select n from Empresa e join e.noticias n where e.id=?1 AND upper(n.titulo) like upper(concat('%', ?2, '%')) or upper(n.resumen) like upper(concat('%', ?2, '%')) ORDER BY n.createAt DESC")
-	public Page<Noticia> findAllPageableByEmpresaId(Long id,Pageable pageable);
+	public Page<Noticia> findNoticiaByTituloOrResumenByEmpresaId(Long id, String term, Pageable pageable);
 }
