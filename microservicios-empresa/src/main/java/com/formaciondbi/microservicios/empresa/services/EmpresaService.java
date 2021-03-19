@@ -13,7 +13,7 @@ public interface EmpresaService extends Services<Empresa, Long>{
 
 	public List<Noticia> findNoticiasByEmpresaId(Long id); 
 	
-	public List<Noticia> finByTituloOrResumen(Long id, String term);
+	public List<Noticia> findByTituloOrResumen(Long id, String term);
 	
 	public Page<Noticia> findAllPageableByEmpresaId(Long id, Pageable pageable);
 }

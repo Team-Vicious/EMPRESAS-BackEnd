@@ -6,12 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.formaciondbi.microservicios.empresa.entity.Empresa;
 import com.formaciondbi.microservicios.empresa.services.EmpresaService;
 import com.formaciondbi.microservicios.generics.controllers.ControllerImpl;
 import com.formaciondbi.microservicios.generics.services.ServicesImpl;
 
+@RestController
 public class EmpresaController extends ControllerImpl<Empresa, ServicesImpl<Empresa,Long>>{
 
 	@Autowired
@@ -30,10 +32,10 @@ public class EmpresaController extends ControllerImpl<Empresa, ServicesImpl<Empr
 	
 	//trae las noticias limitadas a 5 en orden descendente(el limit lo saque del request del repository porque da error, despues arreglar y agregar)
 	@GetMapping("/{id}/noticias-filtrar/{term}")
-	public ResponseEntity<?> finByTituloOrResumen(@PathVariable Long id, @PathVariable String term){
+	public ResponseEntity<?> findByTituloOrResumen(@PathVariable Long id, @PathVariable String term){
 	
 		try {
-			return ResponseEntity.status(HttpStatus.OK).body(this.empresaService.finByTituloOrResumen(id, term));
+			return ResponseEntity.status(HttpStatus.OK).body(this.empresaService.findByTituloOrResumen(id, term));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("algo salio mal, intente mas tarde");
 		}
