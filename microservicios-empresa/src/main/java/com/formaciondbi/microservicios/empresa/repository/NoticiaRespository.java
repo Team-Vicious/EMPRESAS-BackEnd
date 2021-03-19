@@ -17,7 +17,7 @@ public interface NoticiaRespository extends Repository<Noticia, Long>{
 	
 	//trae una consulta descendente con limite 5(el limite da error, despues arreglar)
 	@Query("select n from Empresa e join e.noticias n where e.id=?1 AND upper(n.titulo) like upper(concat('%', ?2, '%')) or upper(n.resumen) like upper(concat('%', ?1, '%')) ORDER BY n.createAt DESC")
-	public List<Noticia> finByTituloOrResumen(Long id, String term);
+	public List<Noticia> findByTituloOrResumen(Long id, String term);
 	
 	//trae una consulta descendente pageable
 	@Query("select n from Empresa e join e.noticias n where e.id=?1 AND upper(n.titulo) like upper(concat('%', ?2, '%')) or upper(n.resumen) like upper(concat('%', ?1, '%')) ORDER BY n.createAt DESC")
