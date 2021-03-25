@@ -45,4 +45,12 @@ public class EmpresaServiceImpl extends ServicesImpl<Empresa, Long> implements E
 		return noticiaRepository.findNoticiaByTituloOrResumenByEmpresaId(id, term, pageable);
 	}
 
+
+	@Override
+	@Transactional(readOnly = true)
+	public Noticia findNoticiaById(Long id) {
+		
+		return noticiaRepository.findNoticiaById(id);
+	}
+
 }

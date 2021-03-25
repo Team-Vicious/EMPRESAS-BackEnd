@@ -26,7 +26,7 @@ public class EmpresaController extends ControllerImpl<Empresa, ServicesImpl<Empr
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(this.empresaService.findNoticiasByEmpresaId(id));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("algo salio mal, intente mas tarde");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("algo salio mal, intente mas tarde \n"+ e.getMessage());
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class EmpresaController extends ControllerImpl<Empresa, ServicesImpl<Empr
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(this.empresaService.findByTituloOrResumen(id, term));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("algo salio mal, intente mas tarde");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("algo salio mal, intente mas tarde \n"+ e.getMessage());
 		}
 	}
 	
@@ -48,7 +48,21 @@ public class EmpresaController extends ControllerImpl<Empresa, ServicesImpl<Empr
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(this.empresaService.findNoticiaByTituloOrResumenByEmpresaId(id, term, pageable));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("algo salio mal, intente mas tarde \n"+ e.getMessage());
 		}
 	}
+	
+	
+	//trae una noticia por su id
+		@GetMapping("/noticias/{id}")
+		public ResponseEntity<?> findNoticiaById(@PathVariable Long id){
+		
+			try {
+				return ResponseEntity.status(HttpStatus.OK).body(this.empresaService.findNoticiaById(id));
+			} catch (Exception e) {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("algo salio mal, intente mas tarde \n"+ e.getMessage());
+			}
+		}
+	
+	
 }
