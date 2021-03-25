@@ -17,4 +17,6 @@ public interface EmpresaService extends Services<Empresa, Long>{
 	
 	public Page<Noticia> findNoticiaByTituloOrResumenByEmpresaId(Long id, String term, Pageable pageable);
 	
+	public Noticia findNoticiaById(Long id);
+	
 }

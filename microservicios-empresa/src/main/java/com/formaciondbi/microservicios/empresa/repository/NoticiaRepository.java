@@ -22,4 +22,9 @@ public interface NoticiaRepository extends Repository<Noticia, Long>{
 	//trae una consulta descendente pageable de noticias por id empresa
 	@Query("select n from Empresa e join e.noticias n where e.id=?1 AND upper(n.titulo) like upper(concat('%', ?2, '%')) or upper(n.resumen) like upper(concat('%', ?2, '%')) ORDER BY n.createAt DESC")
 	public Page<Noticia> findNoticiaByTituloOrResumenByEmpresaId(Long id, String term, Pageable pageable);
+
+
+	//trae una noticia por su id
+	@Query("select n from Empresa e join e.noticias n where n.id=?1")
+	public Noticia findNoticiaById(Long id);
 }
