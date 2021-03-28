@@ -44,8 +44,11 @@ public class Empresa {
 	@Column(length = 1024)
 	private String quienSomos;
 	
-	@Column(length = 1020)
-	private String iframe;
+	@Column(length = 50)
+	private String latitud;
+	
+	@Column(length = 50)
+	private String longitud;
 	
 	@Column(length = 256)
 	private String domicilio;
